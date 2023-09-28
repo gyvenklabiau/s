@@ -1,5 +1,5 @@
 function e(id) { return document.getElementById(id) }
-function show(id) { e(id).style.display = 'block'}
+function show(id, display = 'block') { e(id).style.display = display}
 function hide(id) { e(id).style.display = 'none'}
 function q(query) { return document.querySelector(query) }
 function qa(query) { return document.querySelectorAll(query) }
