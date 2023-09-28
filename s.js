@@ -67,7 +67,7 @@ function obj(el) {
     }
     if(el.children.length) {
         o.c = []
-        for(ch of el.children) {o.c.push(objectify(ch))}
+        for(ch of el.children) {o.c.push(obj(ch))}
         const cln = el.cloneNode(true)
         const cl = cln.children.length
         for(var i = 0; i < cl; i++) { cln.children[0].remove() }
@@ -78,30 +78,17 @@ function obj(el) {
 }
 
 function lw(w) {
-    for(i of w.head.items) { add(q('head'), ce(i))}
-    var st = ''
-    const se = c('style')
-    for(s of w.head.styles) { add(se, s.s + '{' + so(s.o) + '}') }
-    add(q('head'), se)
-    t(q('title'), w.head.title || '')
-    a(q('[name=description]'), 'content', w.head.description || '')
-    add(document.head, ce(w.head.script))
-    add(document.body, ce(w.body.script))
-    for(e of w.body.main) { add(q('main'), ce(e))}
+    const head = q('head')
+    const body = q('body')
+    for(h of w.head) { add(head, ce(h)) }
+    for(b of w.body) { add(body, ce(b)) }
 }
 
-function mw(document) {
-    var w = {
-        head: {
-            title: document.querySelector('title').innerText,
-            description: document.querySelector('[name=description]').getAttribute('content'),
-            items: document.head.children,
-        },
-        body: {
-            main: document.querySelector('main').children
-        }
-    }
 
+function mw(document) {
+    var w = {head: [], body: []}
+    for(h of q('head').children) { w.head.push(obj(h))}
+    for(b of q('body').children) { w.body.push(obj(b))}
     return w
 }
 
