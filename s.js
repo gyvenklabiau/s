@@ -135,3 +135,18 @@ function coe(obj) {
     })
     return el
 }
+
+
+function notify(m, style = 'z-index: 100; padding: 22px; background-color: #ddd; color: #222; display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0;  font-size: 22px;') {
+    const n = c('div')
+    ss(n, style)
+    t(n, m)
+
+    const x = c('div')
+    t(x, 'ok')
+    a(x, 'onclick', 'p(this).remove()')
+    ss(x, 'position: fixed; bottom: 0; margin: 1em; padding: 1em; cursor: pointer; text-align: center; background-color: #222; color: #ddd;')
+    add(n,x)
+
+    add(q('body'), n)
+}
