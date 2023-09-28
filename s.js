@@ -11,7 +11,7 @@ function add(el, child) { el.append(child) }
 function sadd(el, child) { el.prepend(child) }
 function c(el) { return document.createElement(el) }
 function a(el, atr, val) { el.setAttribute(atr, val) }
-function ga(el, atr) { el.getAttribute(atr) }
+function ga(el, atr) { return el.getAttribute(atr) }
 function ao(el, obj) { for(atr in obj) { el.setAttribute(atr, obj[atr].replace(/_/g, '-')) } }
 function ar(el, atr) { el.removeAttribute(atr) }
 function s(el, key, value) { el.style[key] = value }
@@ -26,6 +26,7 @@ function dg(key) { return window.localStorage.getItem(key)}
 function dso(key, obj) { window.localStorage.setItem(key, JSON.stringify(obj))}
 function dgo(key) { return JSON.parse(window.localStorage.getItem(key))}
 function p(el) { return el.parentNode }
+function gp(el) { return p(el.parentNode) }
 function si(el) { return p(el).children }
 function uo(object, key, value) {
 
