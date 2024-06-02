@@ -1,16 +1,15 @@
-function e(id) { return document.getElementById(id) }
-function show(id, display = 'block') { e(id).style.display = display}
-function hide(id) { e(id).style.display = 'none'}
-function q(query) { return document.querySelector(query) }
+function eg(id) { return document.getElementById(id) }
+function sh(id, display = 'block') { e(id).style.display = display}
+function hi(id) { e(id).style.display = 'none'}
+function qd(query) { return document.querySelector(query) }
 function qa(query) { return document.querySelectorAll(query) }
 function qe(el, query) { return el.querySelector(query) }
 function qea(el, query) { return el.querySelectorAll(query) }
-function t(el, text) { el.innerText = text || '' }
-function tg(el) { return el.innerText }
-function add(el, child) { el.append(child) }
-function sadd(el, child) { el.prepend(child) }
-function c(el) { return document.createElement(el) }
-function a(el, atr, val) { el.setAttribute(atr, val) }
+function t(el, text) { text ? el.innerText = text : return el.innerText }
+function to(el, child) { el.append(child) }
+function in(el, child) { el.prepend(child) }
+function c(el = "DIV") { return document.createElement(el) }
+function a(el, atr, val) { val ? el[atr] = val : attr ? el.setAttribute(atr, val) : el.getAttribute(attr)}
 function ga(el, atr) { return el.getAttribute(atr) }
 function ao(el, obj) { for(atr in obj) { el.setAttribute(atr, obj[atr].replace(/_/g, '-')) } }
 function ar(el, atr) { el.removeAttribute(atr) }
