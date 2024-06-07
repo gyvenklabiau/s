@@ -1,17 +1,26 @@
-function eg(id) { return document.getElementById(id) }
-function sh(id, display = 'block') { e(id).style.display = display}
-function hi(id) { e(id).style.display = 'none'}
-function qd(query) { return document.querySelector(query) }
-function qa(query) { return document.querySelectorAll(query) }
-function qe(el, query) { return el.querySelector(query) }
-function qea(el, query) { return el.querySelectorAll(query) }
+function a(element,attribute,value) { 
+    if(value) {
+        if(typeof value === 'object') {
+            for(atr in value) { element.setAttribute(atr, value[atr].replace(/_/g, '-'))
+            }
+        } else { element.setAttribute(attribute,value) }
+    }
+    else if(attribute) {
+        element.getAttribute(attribute)
+}
+else return element.attributes
+
+function e(query = '*', element = document, all = 0) { return all?element.querySelectorAll(query): element.getElementById(id) }
+
 function t(el, text) { text ? el.innerText = text : return el.innerText }
-function to(el, child) { el.append(child) }
-function in(el, child) { el.prepend(child) }
+
+function to(el, child, prepend = 0) { if(typeof el === 'string') {
+    prepend? e(el).prepend(child) : e(el).append(child)}
+    else prepend? el.prepend(child) : el.append(child)
+}
+
 function c(el = "DIV") { return document.createElement(el) }
-function a(el, atr, val) { val ? el[atr] = val : attr ? el.setAttribute(atr, val) : el.getAttribute(attr)}
-function ga(el, atr) { return el.getAttribute(atr) }
-function ao(el, obj) { for(atr in obj) { el.setAttribute(atr, obj[atr].replace(/_/g, '-')) } }
+
 function ar(el, atr) { el.removeAttribute(atr) }
 function s(el, key, value) { el.style[key] = value }
 function ss(el, style) { el.style = style }
