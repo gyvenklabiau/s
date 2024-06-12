@@ -1,16 +1,14 @@
-function a(element,attribute,value) { 
+function a(element,attribute,value) {
     if(value) {
         if(typeof value === 'object') {
-            for(atr in value) { element.setAttribute(atr, value[atr].replace(/_/g, '-'))
-            }
+            for(atr in value) { element.setAttribute(atr, value[atr].replace(/_/g, '-')) }
         } else { element.setAttribute(attribute,value) }
     }
-    else if(attribute) {
-        element.getAttribute(attribute)
+    else if(attribute) { element.getAttribute(attribute) }
+    else return element.attributes
 }
-else return element.attributes
 
-function e(query = '*', element = document, all = 0) { return all?element.querySelectorAll(query): element.getElementById(id) }
+function e(query = '*', element = document, all = 0) { return all?element.querySelectorAll(query): element.querySelector(query) }
 
 function t(el, text) { text ? el.innerText = text : return el.innerText }
 
@@ -19,20 +17,21 @@ function to(el, child, prepend = 0) { if(typeof el === 'string') {
     else prepend? el.prepend(child) : el.append(child)
 }
 
+function d(key, value) { typeof value == 'string' ? window.localStorage.setItem(key, value) : window.localStorage.setItem(key, JSON.stringify(value))}
+function dg(key) { return window.localStorage.getItem(key)}
+function dso(key, obj) { window.localStorage.setItem(key, JSON.stringify(obj))}
+function dgo(key) { return JSON.parse(window.localStorage.getItem(key))}
+
 function c(el = "DIV") { return document.createElement(el) }
 
-function ar(el, atr) { el.removeAttribute(atr) }
-function s(el, key, value) { el.style[key] = value }
+function s(el, key, value = null) { value? el.style[key] = value : el.style[key] }
 function ss(el, style) { el.style = style }
 function ca(el, clas) { el.classList.add(clas) }
 function cr(el, clas) { el.classList.remove(clas) }
 function ct(el, clas) { el.classList.toggle(clas) }
 function ih(el, html) {el.innerHTML = html}
 function oh(el, html) {el.outerHTML = html}
-function ds(key, value) { window.localStorage.setItem(key, value)}
-function dg(key) { return window.localStorage.getItem(key)}
-function dso(key, obj) { window.localStorage.setItem(key, JSON.stringify(obj))}
-function dgo(key) { return JSON.parse(window.localStorage.getItem(key))}
+
 function p(el) { return el.parentNode }
 function gp(el) { return p(el.parentNode) }
 function si(el) { return p(el).children }
