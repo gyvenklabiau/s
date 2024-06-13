@@ -13,18 +13,18 @@ function e(query = '*', element = document, all = 0) { return all?element.queryS
 function t(el, text) { text ? el.innerText = text : return el.innerText }
 
 function to(el, child, prepend = 0) { if(typeof el === 'string') {
-    prepend? e(el).prepend(child) : e(el).append(child)}
-    else prepend? el.prepend(child) : el.append(child)
+    prepend? e(el).prepend(typeof child === 'object') ? ce(child) : e(el)) : e(el).append(child)}
+    else prepend? el.prepend(typeof child === 'object') ? ce(child) : e(el)) : el.append(child)
 }
 
-function d(key, value) { typeof value == 'string' ? window.localStorage.setItem(key, value) : window.localStorage.setItem(key, JSON.stringify(value))}
+function s(key, value = null) { return value ? typeof value == 'string' ? window.localStorage.setItem(key, value) : window.localStorage.setItem(key, JSON.stringify(value)) : JSON.parse(window.localStorage.getItem(key)) ?? window.localStorage.getItem(key)}
 function dg(key) { return window.localStorage.getItem(key)}
 function dso(key, obj) { window.localStorage.setItem(key, JSON.stringify(obj))}
 function dgo(key) { return JSON.parse(window.localStorage.getItem(key))}
 
 function c(el = "DIV") { return document.createElement(el) }
 
-function s(el, key, value = null) { value? el.style[key] = value : el.style[key] }
+function sa(el, key, value = null) { value? el.style[key] = value : el.style[key] }
 function ss(el, style) { el.style = style }
 function ca(el, clas) { el.classList.add(clas) }
 function cr(el, clas) { el.classList.remove(clas) }
