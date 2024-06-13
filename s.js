@@ -18,9 +18,6 @@ function to(el, child, prepend = 0) { if(typeof el === 'string') {
 }
 
 function s(key, value = null) { return value ? typeof value == 'string' ? window.localStorage.setItem(key, value) : window.localStorage.setItem(key, JSON.stringify(value)) : JSON.parse(window.localStorage.getItem(key)) ?? window.localStorage.getItem(key)}
-function dg(key) { return window.localStorage.getItem(key)}
-function dso(key, obj) { window.localStorage.setItem(key, JSON.stringify(obj))}
-function dgo(key) { return JSON.parse(window.localStorage.getItem(key))}
 
 function c(el = "DIV") { return document.createElement(el) }
 
@@ -47,12 +44,13 @@ function uo(object, key, value) {
             }
         }
     }
+    else { object[key]= value }
     
 }
-function so(obj) {
+function so(obj, el) {
     var st = ''
     for(s in obj) { st += s + ':' + obj[s] + '; ' }
-    return st.replace(/_/g, '-')
+    el ? el.style = st.replace(/_/g, '-') : return st
 }
 function ce(obj) { 
     const el = c(obj.e || 'div')
