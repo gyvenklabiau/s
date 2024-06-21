@@ -32,21 +32,7 @@ function oh(el, html) {el.outerHTML = html}
 function p(el) { return el.parentNode }
 function gp(el) { return p(el.parentNode) }
 function si(el) { return p(el).children }
-function uo(object, key, value) {
 
-    let path = key.split('.')
-
-    if(path.length > 1) {
-        for(p in path) {
-            if(!object[path[p]]) { object[path[p]] = {} }
-            if(p === path.length - 1) {
-                object
-            }
-        }
-    }
-    else { object[key]= value }
-    
-}
 function so(obj, el) {
     var st = ''
     for(s in obj) { st += s + ':' + obj[s] + '; ' }
@@ -82,21 +68,6 @@ function obj(el) {
     return o
 }
 
-function lw(w) {
-    const head = q('head')
-    const body = q('body')
-    for(h of w.head) { add(head, ce(h)) }
-    for(b of w.body) { add(body, ce(b)) }
-}
-
-
-function mw(document) {
-    var w = {head: [], body: []}
-    for(h of q('head').children) { w.head.push(obj(h))}
-    for(b of q('body').children) { w.body.push(obj(b))}
-    return w
-}
-
 function mo(o = {}, objects = []) {
     let ob = o
     //iterate objects from array
@@ -117,29 +88,15 @@ function mo(o = {}, objects = []) {
             }
         }
     }
-
     return ob
 }
-
-function coe(obj) {
-    const el = ce({
-        a: {o: JSON.stringify(obj)},
-        t: obj.e
-    })
-    return el
-}
-
-
-function notify(m, style = 'z-index: 100; padding: 22px; background-color: #ddd; color: #222; display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; right: 0; bottom: 0;  font-size: 22px;') {
-    const n = c('div')
-    ss(n, style)
-    t(n, m)
-
-    const x = c('div')
-    t(x, 'ok')
-    a(x, 'onclick', 'p(this).remove()')
-    ss(x, 'position: fixed; bottom: 0; margin: 1em; padding: 1em; cursor: pointer; text-align: center; background-color: #222; color: #ddd;')
-    add(n,x)
-
-    add(q('body'), n)
+function notify(m) {
+	const back = ec({
+		e: 'div', 
+		a: { style : 'background-color: rgba(0,0,0,0.4);z-index: 10000; position: fixed; top:0; bottom: 0; left: 0; right: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: all 200ms',
+			onclick: 'this.remove()'}
+	})
+	const msg = ec({e: 'div', t: m, a: { style: 'border: 3px solid rgb(255,196,42); background-color: #000; color: #fff; padding: 1em;'}})
+	to(back, msg)
+	to(e('body'), back)
 }
